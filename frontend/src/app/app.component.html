@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">TEST</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+            <a class="nav-link" routerLink="/tasks">Task </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/private">Private</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+                <li class="nav-item ">
+                <a class="nav-link" routerLink="/signup">Signup </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" routerLink="/signin">Signin</a>
+                </li>
+            </ng-container>
+            <ng-template #loggedIn>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="authService.logout()">logout</a>
+                </li>
+            </ng-template>
+        </ul>
+        </div>
+    </div>
+</nav>
+<div class="container p-5">
+    <router-outlet></router-outlet>
+</div>
